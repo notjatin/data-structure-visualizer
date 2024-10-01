@@ -27,3 +27,4 @@
             ],
         };
         ```
+> setting up default branch to master in remote
