@@ -1,4 +1,4 @@
-import DataNode from "./DataNode";
+import DataNode from "../components/DataNode";
 
 interface Props {
     dataItems: number[];
