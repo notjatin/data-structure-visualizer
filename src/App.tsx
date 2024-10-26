@@ -4,10 +4,11 @@ import DataDisplay from "./sections/DataDisplay";
 import DataInput from "./components/DataInput";
 import InterectionSection from "./sections/InterectionSection";
 import InfoSection from "./sections/InfoSection";
+import { FixedArray } from "./wrappers/fixedArray";
+
 
 function App() {
-    const [dataItems, setDataItems] = useState<number[]>([]);
-    const [capacity, setCapacity] = useState(10);
+    const [array, setArray] = useState(new FixedArray<number>(0, 4));
 
     const [selectedStructure, setSelectedStructure] = useState("Array");
 
@@ -15,17 +16,13 @@ function App() {
         setSelectedStructure(structure);
     };
 
-    const handleNewNodeClick = () => {
-        const newNum = Math.floor(Math.random() * 100);
-        setDataItems([...dataItems, newNum]);
-    };
-
+    // filter the array by removing the item being clicked
     const handleItemClick = (item: number) => {
-        setDataItems(
-            dataItems.filter((dataItem: number) => {
-                return dataItem !== item;
-            })
-        );
+        // setDataItems(
+        //     dataItems.filter((dataItem: number) => {
+        //         return dataItem !== item;
+        //     })
+        // );
     };
 
     return (
@@ -34,14 +31,13 @@ function App() {
                 <header className="m-4">
                     <div className="bg-Black-olive text-white h-12 rounded-md">
                         <DataInput
-                            handleNewNodeClick={handleNewNodeClick}
                             handleStructureChange={handleStructureChange}
                         />
                     </div>
                 </header>
                 <section className="flex-1 bg-Ecru m-4 mt-0 rounded-lg">
                         <DataDisplay
-                            dataItems={dataItems}
+                            dataItems={array}
                             handleItemClick={handleItemClick}
                         />
                 </section>

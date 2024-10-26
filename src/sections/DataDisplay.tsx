@@ -1,23 +1,28 @@
 import DataNode from "../components/DataNode";
+import { FixedArray } from "../wrappers/fixedArray";
 
 interface Props {
-    dataItems: number[];
+    dataItems: FixedArray<number>;
     handleItemClick: (item: number) => void;
 }
 
 const DataDisplay: React.FC<Props> = ({ dataItems, handleItemClick }) => {
-    return dataItems.map((item: number) => {
-        return (
-            <DataNode
-                item={item}
-                handleItemClick={() => handleItemClick(item)}
-                key={
-                    item * Math.floor(Math.random() * 1000) +
-                    Math.floor(Math.random() * 10)
+    const array = dataItems.getAllElements();
+
+    return (
+        <div className="relative">
+            <div className="bg-white text-Black-olive font-mono font-extrabold text-3xl z-10 absolute right-0 m-4 w-16 h-16 rounded-md">
+                <span className="m-6 mt-5">{dataItems.getSpace()}</span>
+            </div>
+            <div>
+                {
+                    array.map((item, index) => {
+                        return <DataNode item={item} key={index}/>
+                    })
                 }
-            />
-        );
-    });
+            </div>
+        </div>
+    );
 };
 
 export default DataDisplay;
