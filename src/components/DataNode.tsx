@@ -1,5 +1,5 @@
 interface Props {
-    item: number;
+    item: string | null;
 };
 
 const DataNode: React.FC<Props> = ({ item }) => {

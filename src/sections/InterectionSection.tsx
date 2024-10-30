@@ -3,10 +3,14 @@ import ArrayInteractionComponent from "../components/ArrayInteractionComponent";
 import Button from "../components/interaction/Button";
 
 interface Props {
-    current: string;
+    onInsert: (value: string) => void;
+    onDelete: (index: string) => void;
 }
 
-const InterectionSection: React.FC<Props> = ({ current }) => {
+const InterectionSection: React.FC<Props> = ({ onInsert, onDelete }) => {
+    const [currentValue, setCurrentValue] = useState("");
+    const [deleteIndex, setDeleteIndex] = useState<string>("");
+
     const [interecting, setInterecting] = useState(false);
     const [operation, setOperation] = useState("");
 
@@ -19,31 +23,70 @@ const InterectionSection: React.FC<Props> = ({ current }) => {
         <>
             {interecting ? (
                 <div className="p-4">
-                    <Button
-                        size={10}
-                        onClick={() => {
-                            setInterecting(false);
-                        }}
-                    >
-                        Go Back
-                    </Button>
+                    <div>
+                        <Button
+                            size={10}
+                            onClick={() => {
+                                setInterecting(false);
+                            }}
+                        >
+                            Go Back
+                        </Button>
+                    </div>
                     {operation === "insert" ? (
                         <div>
                             <input
                                 type="text"
                                 placeholder="type in a unique value"
+                                name="data-item"
+                                value={currentValue}
+                                onChange={(e) =>
+                                    setCurrentValue(e.target.value)
+                                }
                             />
-                            <Button
-                                size={10}
-                                onClick={() => {
-                                    console.log("do something");
+                            <div>
+                                <Button
+                                    size={10}
+                                    onClick={() => {
+                                        // send the data to validate
+                                        onInsert(currentValue);
+                                    }}
+                                >
+                                    Insert
+                                </Button>
+                            </div>
+                        </div>
+                    ) : operation === "delete" ? (
+                        <div>
+                            <input
+                                type="text"
+                                placeholder="type in the index to delete"
+                                name="index"
+                                value={deleteIndex?.toString()}
+                                onChange={(e) => {
+                                    const val = e.target.value;
+                                    console.log(val);
+                                    setDeleteIndex(val);
                                 }}
-                            >
-                                Insert
-                            </Button>
+                            />
+                            <div>
+                                <Button
+                                    size={10}
+                                    onClick={() => {
+                                        // send the index to validate
+                                        onDelete(deleteIndex);
+                                    }}
+                                >
+                                    Delete
+                                </Button>
+                            </div>
+                        </div>
+                    ) : operation === "insert" ? (
+                        <div>
+                            <span>The insert function.</span>
                         </div>
                     ) : (
-                        <span>Some other Operation</span>
+                        <div>not yet implemented</div>
                     )}
                 </div>
             ) : (

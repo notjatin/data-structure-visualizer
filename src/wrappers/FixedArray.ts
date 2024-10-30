@@ -3,10 +3,10 @@ export class FixedArray<T> {
     private size: number;
     private capacity: number;
 
-    constructor(initialValue: T, initialCapacity: number) {
+    constructor(initialCapacity: number) {
         this.size = 0;
         this.capacity = initialCapacity;
-        this.elements = new Array(this.capacity).fill(initialValue);
+        this.elements = new Array(this.capacity).fill(null);
     }
 
     // search with an index
