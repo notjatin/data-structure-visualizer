@@ -5,11 +5,13 @@ import Button from "../components/interaction/Button";
 interface Props {
     onInsert: (value: string) => void;
     onDelete: (index: string) => void;
+    onSearch: (index: string) => void;
 }
 
-const InterectionSection: React.FC<Props> = ({ onInsert, onDelete }) => {
+const InterectionSection: React.FC<Props> = ({ onInsert, onDelete, onSearch }) => {
     const [currentValue, setCurrentValue] = useState("");
     const [deleteIndex, setDeleteIndex] = useState<string>("");
+    const [searchKey, setSearchKey] = useState<string>("");
 
     const [interecting, setInterecting] = useState(false);
     const [operation, setOperation] = useState("");
@@ -81,9 +83,30 @@ const InterectionSection: React.FC<Props> = ({ onInsert, onDelete }) => {
                                 </Button>
                             </div>
                         </div>
-                    ) : operation === "insert" ? (
+                    ) : operation === "search" ? (
                         <div>
-                            <span>The insert function.</span>
+                            <input
+                                type="text"
+                                placeholder="type in the key to search"
+                                name="key"
+                                value={searchKey?.toString()}
+                                onChange={(e) => {
+                                    const val = e.target.value;
+                                    console.log(val);
+                                    setSearchKey(val);
+                                }}
+                            />
+                            <div>
+                                <Button
+                                    size={10}
+                                    onClick={() => {
+                                        // send the index to validate
+                                        onSearch(searchKey);
+                                    }}
+                                >
+                                    Search
+                                </Button>
+                            </div>
                         </div>
                     ) : (
                         <div>not yet implemented</div>

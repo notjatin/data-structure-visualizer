@@ -49,6 +49,19 @@ function App() {
         }
     };
 
+    const handleSearch = (key: string) => {
+        let flag = false;
+        array.items.map((item, index) => {
+            if (key === item) {
+                console.log(`item found at position at index ${index}`);
+                flag = true;
+            }
+        });
+        if (flag === false) {
+            console.log(`${key} not found in the array.`)
+        }
+    };
+
     return (
         <div className="w-lvw h-lvh grid grid-cols-[5fr_2fr] grid-rows-[1fr_1fr]">
             <main className="bg-Almond m-4 mr-2 rounded-lg flex flex-col row-span-2">
@@ -75,6 +88,7 @@ function App() {
                     <InterectionSection
                         onInsert={handleInsert}
                         onDelete={handleDelete}
+                        onSearch={handleSearch}
                     />
                 </div>
                 <div className="bg-Ecru m-2 rounded-lg">
