@@ -4,9 +4,9 @@ import { FixedArray } from "../Types";
 
 const DataDisplay: React.FC<FixedArray<string>> = ({ items, size }) => {
     return (
-        <div className="relative h-full">
-            <div className="bg-white text-Black-olive font-mono font-extrabold text-3xl z-10 absolute right-0 m-4 w-16 h-16 rounded-md">
-                <span className="m-6 mt-5">{size}</span>
+        <>
+            <div className="bg-primary text-primary z-10 absolute right-0 m-4 w-16 h-16 rounded-md place-content-center text-center shadow-md shadow-black">
+                {size}
             </div>
             <div className="h-full flex justify-center items-center ">
                 {items.map((item, index) => {
@@ -17,7 +17,7 @@ const DataDisplay: React.FC<FixedArray<string>> = ({ items, size }) => {
                 <DataNode item={'15'} key={Date.now()}/>
                 <DataNode item={'99'} key={Date.now()}/> */}
             </div>
-        </div>
+        </>
     );
 };
 
