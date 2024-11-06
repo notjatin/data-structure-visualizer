@@ -1,9 +1,1 @@
-export interface FixedArray<T> {
-    items: Array<T | null>;
-    size: number;
-}
-
-export type structure = {
-    value: string;
-    label: string;
-};
+// custom types to be moved here

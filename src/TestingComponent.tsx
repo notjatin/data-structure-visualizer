@@ -5,7 +5,7 @@ interface Props {
 }
 const TestingComponent: React.FC<Props> = ({ children }) => {
     return (
-        <div className="w-lvw h-lvh flex justify-center items-center">
+        <div className="w-lvw h-lvh flex flex-col justify-center items-center">
             {children}
         </div>
     );

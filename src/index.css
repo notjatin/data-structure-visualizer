@@ -7,23 +7,3 @@
     @apply text-lg font-semibold text-blue-500;
 } */
 /* NOTE: If the number of custom classes is large consider separating them in relative  files. */
-
-.bg-primary {
-    @apply bg-gray-600 text-white;
-}
-
-.bg-secondary {
-    @apply bg-gray-300 text-gray-800;
-}
-
-.bg-hover {
-    @apply bg-black text-white;
-}
-
-.text-primary {
-    @apply font-mono font-extrabold text-3xl;
-}
-
-.border-primary {
-    @apply border border-white
-}
