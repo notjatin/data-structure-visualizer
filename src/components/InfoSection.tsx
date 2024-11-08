@@ -1,0 +1,1 @@
+// component to display static info (pseudo code, time & space complexities, additional info etc.)

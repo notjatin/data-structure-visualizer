@@ -5,10 +5,10 @@ import { Frame } from "./ShowcaseComponents";
 import { FaGithub, FaHamburger, FaInstagram, FaLinkedin } from "react-icons/fa";
 
 // NOTES: Will be responsive, so mobile first ❌
-// Children: 1. a top-right component for some minor info ❌
+// Children: 1. a top-right component for some minor info ✅
 // 2. the frames will be dynamically added, removed ❌
 // 3. a header with multiple subsections possibly ❌
-// Styling: 1. A grid might look good, using gradient (not actual grid) ❌
+// Styling: 1. A grid might look good, using gradient (not actual grid) ✅
 // 2. preferrably a square, or close to square ❌
 
 const ShowCase = () => {
