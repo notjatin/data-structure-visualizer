@@ -2,9 +2,7 @@
 
 import clsx from "clsx";
 import { useState } from "react";
-import { BsArrowRight, BsArrowRightSquare, BsArrowRightSquareFill } from "react-icons/bs";
-import { FaArrowRight } from "react-icons/fa";
-import { TbSquareArrowRight, TbSquareRoundedArrowRight } from "react-icons/tb";
+import { TbSquareRoundedArrowRight } from "react-icons/tb";
 
 // NOTES:
 // 1. Make a tabbed screen, two options currently, complexity and pseudo code
