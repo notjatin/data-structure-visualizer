@@ -1,7 +1,7 @@
 // component which will maintain interective components in the side
 
-import { useState } from "react";
-import { Strip } from "./Strip";
+import { StripSlider } from "./StripSlider";
+import { GoArrowRight } from "react-icons/go";
 
 // NOTES:
 // 1. Will use buttons with input elements. ❌
@@ -15,41 +15,30 @@ export type utilityType = {
     utility: string;
     data: string;
 };
-const UtilitySection = () => {
-    const [utility, setUtility] = useState<utilityType>({
-        utility: "",
-        data: "",
-    });
 
+// consider using icons instead of labels (more interactive? yes/no)
+const stripItems = [
+    { value: "insert", label: "Insert", tone: "green" },
+    { value: "delete", label: "Delete", tone: "red" },
+    { value: "modify", label: "Modify", tone: "blue" },
+    { value: "search", label: "Search", tone: "yellow" },
+];
+const UtilitySection = () => {
     return (
-        // replace the vertical scrollbar with an arrow later
-        <section className="bg-green-200 size-[length:16rem] h-fit overflow-auto overflow-x-hidden">
-            {/* feed these strips through a map */}
-            <Strip
-                className="border-green-500 bg-green-300 text-green-900"
-                value="insert"
-                utility={utility}
-                setUtility={setUtility}
-                />
-            <Strip
-                className="border-red-500 bg-red-300 text-red-900"
-                value="delete"
-                utility={utility}
-                setUtility={setUtility}
-                />
-            <Strip
-                className="border-blue-500 bg-blue-300 text-blue-900"
-                value="modify"
-                utility={utility}
-                setUtility={setUtility}
-                />
-            <Strip
-                className="border-yellow-500 bg-yellow-300 text-yellow-900"
-                value="search"
-                utility={utility}
-                setUtility={setUtility}
-            />
-        </section>
+        // replace the vertical scrollbar with an arrow later in medium/large
+        // on small devices show one strip at a time with side arrows to switch
+
+        <>
+            <StripSlider strips={stripItems} />
+            <div className="w-1/2 h-full flex justify-center items-center">
+                <div className="bg-slate-300 border-2 border-slate-600 flex justify-center items-center rounded-sm p-2 pl-4 pr-4">
+                    <span className="font-sans uppercase tracking-widest text-lg font-bold text-slate-900">
+                        GO
+                    </span>
+                    <GoArrowRight size={25} className="text-slate-900" />
+                </div>
+            </div>
+        </>
     );
 };
 
