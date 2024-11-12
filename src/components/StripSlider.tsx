@@ -2,6 +2,7 @@ import clsx from "clsx";
 import { useState } from "react";
 import { Strip } from "./Strip";
 import { FcNext, FcPrevious } from "react-icons/fc";
+import { v4 } from "uuid";
 
 interface StripSliderProps {
     strips: { value: string; label: string; tone: string }[];
@@ -20,10 +21,11 @@ export const StripSlider: React.FC<StripSliderProps> = ({ strips }) => {
                 return (
                     <Strip
                         className={clsx(
-                            `border-${stripItem.tone}-500 bg-${stripItem.tone}-300 text-${stripItem.tone}-900`,
+                            stripItem.tone,
                             !(currentStrip === index) && "hidden"
                         )}
                         value={stripItem.value}
+                        key={v4()}
                     />
                 );
             })}

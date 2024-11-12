@@ -3,6 +3,7 @@
 import clsx from "clsx";
 import { useState } from "react";
 import { TbSquareRoundedArrowRight } from "react-icons/tb";
+import { v4 } from "uuid";
 
 // NOTES:
 // 1. Make a tabbed screen, two options currently, complexity and pseudo code
@@ -24,12 +25,12 @@ const InfoSection = () => {
     };
 
     return (
-        <section className="bg-green-100 size-64">
+        <>
             <header className="h-10 flex">
                 <div className="flex-1">
                     <ul className="flex h-full w-full items-center">
                         {/* to be mapped later */}
-                        {listItems.map((listItem, index) => {
+                        {listItems.map((listItem) => {
                             return (
                                 <li
                                     className={clsx(
@@ -39,7 +40,7 @@ const InfoSection = () => {
                                     )}
                                     data-value={listItem.value}
                                     onClick={handleTabClick}
-                                    key={index}
+                                    key={v4()}
                                 >
                                     {listItem.label}
                                 </li>
@@ -52,7 +53,7 @@ const InfoSection = () => {
                 </div>
             </header>
             <div>{activeSection}</div>
-        </section>
+        </>
     );
 };
 

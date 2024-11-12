@@ -13,7 +13,6 @@ import { FaGithub, FaHamburger, FaInstagram, FaLinkedin } from "react-icons/fa";
 
 const ShowCase = () => {
     return (
-        <div className="w-full h-1/2 bg-green-50 bg-gradient-to-r from-gray-300 from-[1px] to-transparent to-[1px] bg-[length:2rem_2rem] bg-center">
             <div className="flex flex-col w-full h-full bg-gradient-to-b from-gray-300 from-[1px] to-transparent to-[1px] bg-[length:2rem_2rem] bg-center relative">
                 <header className="bg-green-100 p-2 flex min-h-10 items-center shadow-md shadow-slate-500">
                     <FaHamburger
@@ -40,7 +39,6 @@ const ShowCase = () => {
                     {/* map through the array items here */}
                 </div>
             </div>
-        </div>
     );
 };
 export default ShowCase;
