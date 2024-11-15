@@ -1,19 +1,22 @@
 // component which will maintain interective components in the side
 
-import { useState } from "react";
 import { StripSlider } from "./StripSlider";
-import { GoArrowLeft, GoArrowRight } from "react-icons/go";
-// import { v4 } from "uuid";
-import { GiCardRandom } from "react-icons/gi";
-import { Input } from "./InterectiveComponents";
+import { BiSearch, BiUndo } from "react-icons/bi";
+import { TbReplaceFilled } from "react-icons/tb";
+import { RiDeleteBin6Line } from "react-icons/ri";
+import { FiPlusSquare } from "react-icons/fi";
+import { useState } from "react";
+import { Frame } from "./ShowcaseComponents";
+import { Button, Input } from "./InterectiveComponents";
+import { BsBack } from "react-icons/bs";
 
 // NOTES:
 // 1. Will use buttons with input elements. ❌
 // 2. Should display as follows: strips of light colors to ditate to common functionalities. ✅
 //      green -> entry, red -> remove, blue -> modify, yellow -> search
 // 3. Strips as modified buttons with colors. ✅
-// 4. On next screen, the input box, and send for validation button. ❌
-// 5. (later) an animation to show the data being sent to dhanchu bot in the bottom right corner of showcase. ❌
+// 4. On next screen, the input box, and a validate button. ❌
+// 5. (optional) an animation to show the data being sent to dhanchu bot in the bottom right corner of showcase. ❌
 
 export type utilityType = {
     utility: string;
@@ -24,101 +27,52 @@ export type utilityType = {
 const stripItems = [
     {
         value: "insert",
-        label: "Insert",
+        label: <FiPlusSquare />,
         tone: "border-green-500 bg-green-300 text-green-900",
     },
     {
         value: "delete",
-        label: "Delete",
+        label: <RiDeleteBin6Line />,
         tone: "border-red-500 bg-red-300 text-red-900",
     },
     {
         value: "modify",
-        label: "Modify",
+        label: <TbReplaceFilled />,
         tone: "border-blue-500 bg-blue-300 text-blue-900",
     },
     {
         value: "search",
-        label: "Search",
+        label: <BiSearch />,
         tone: "border-yellow-500 bg-yellow-300 text-yellow-900",
     },
 ];
 const UtilitySection = () => {
     const [inInputMode, setInInputMode] = useState(false);
-    const [randomNo, setRandomNo] = useState<number>();
-    const [insertValue, setInsertValue] = useState<string>('change me');
+    const [currentOperation, setCurrentOperation] = useState<
+        "insert" | "modify" | "delete" | "search" | undefined
+    >("insert");
 
-    function handleRandomFill(): void {
-        setRandomNo(Math.floor(Math.random() * 99));
-    }
-
-    function handleInsertClick(): void {
-        console.log(insertValue);
-    }
     return (
         // replace the vertical scrollbar with an arrow later in medium/large
         // on small devices show one strip at a time with side arrows to switch
-
         <>
             {inInputMode ? (
-                <>
-                    <div className="w-1/2 h-full flex justify-evenly items-start">
-                        {/* <div
-                            className="h-1/2 w-full flex justify-center items-center gap-2 bg-slate-50 border-4 border-slate-800 p-1 rounded-sm  cursor-pointer select-none"
-                            onClick={handleRandomFill}
-                        >
-                            <span className="text-slate-800 text-sm uppercase tracking-wider font-sans font-bold">
-                                Random
-                            </span>
-                            <GiCardRandom
-                                size={35}
-                                className=" text-slate-800"
-                            />
-                        </div> */}
-                        {/* <div className="h-1/2 w-full bg-slate-50 border-4 border-slate-600 text-slate-600 rounded-r-md text-center content-center tracking-wider font-mono text-lg font-semibold">
-                            {randomNo}
-                        </div> */}
-                        <div>
-                            <input value={insertValue} onChange={(e) => setInsertValue(e.currentTarget.value)} />
-                            <button onClick={handleInsertClick}>Insert</button>
-                        </div>
-                        {/* <ol className="w-full flex-1 grid grid-cols-4 grid-rows-3 bg-blue-50">
-                            {
-                                array.map(item => <li className="content-center text-center bg-slate-200 m-1" key={v4()}>{item}</li>)
-                            }
-                        </ol>
-                        <div className="h-8">Down here</div> */}
+                <div className="w-full h-full bg-green-300 flex">
+                    <div className="w-3/6 h-full inline-flex justify-center items-center">
+                        <Input placeHolder="new value here" />
                     </div>
-                    <div className="w-1/2 h-full flex justify-center items-center">
-                        <div
-                            className="bg-slate-300 border-4 border-slate-600 flex justify-center items-center rounded-sm pl-2 pr-2 cursor-pointer select-none"
-                            onClick={() => setInInputMode(false)}
-                        >
-                            <span className="font-sans uppercase tracking-widest text-lg font-bold text-slate-900">
-                                back
-                            </span>
-                            <GoArrowLeft size={25} className="text-slate-900" />
-                        </div>
+                    <div className="w-2/6 h-full inline-flex justify-center items-center">
+                        <Button>{currentOperation}</Button>
                     </div>
-                </>
+                    <div className="w-1/6 inline-flex justify-center items-center">
+                        <BiUndo
+                            size={50}
+                            className="text-green-200 border-4 border-green-200 rounded-md bg-slate-500"
+                        />
+                    </div>
+                </div>
             ) : (
-                <>
-                    <StripSlider strips={stripItems} />
-                    <div className="w-1/2 h-full flex justify-center items-center">
-                        <div
-                            className="bg-slate-300 border-4 border-slate-600 flex justify-center items-center rounded-sm pl-2 pr-2 cursor-pointer select-none"
-                            onClick={() => setInInputMode(true)}
-                        >
-                            <span className="font-sans uppercase tracking-widest text-lg font-bold text-slate-900">
-                                GO
-                            </span>
-                            <GoArrowRight
-                                size={25}
-                                className="text-slate-900"
-                            />
-                        </div>
-                    </div>
-                </>
+                <StripSlider strips={stripItems} />
             )}
         </>
     );

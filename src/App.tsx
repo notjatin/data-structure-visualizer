@@ -2,6 +2,7 @@ import "./App.css";
 import InfoSection from "./components/InfoSection";
 import ShowCase from "./components/ShowCase";
 import UtilitySection from "./components/UtilitySection";
+import { InputProvider } from "./contexts/InputContext";
 
 function App() {
     return (
@@ -16,7 +17,9 @@ function App() {
                         <InfoSection />
                     </div>
                     <div className="h-full w-full bg-green-200 flex items-center overflow-auto">
-                        <UtilitySection />
+                        <InputProvider>
+                            <UtilitySection />
+                        </InputProvider>
                     </div>
                 </section>
             </main>

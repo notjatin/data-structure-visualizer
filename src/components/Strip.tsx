@@ -8,7 +8,9 @@ export const Strip: React.FC<StripProps> = ({ className, value }) => {
     return (
         <div
             className={clsx(
-                "h-fit min-w-24 border-4 md:hover:border-4 rounded-sm m-2 font-sans text-center content-center uppercase tracking-widest text-lg md:hover:text-lg font-bold md:hover:font-bold transition-all cursor-pointer",
+                "font-mono text-center capitalize tracking-wider font-semibold", 
+                "h-fit w-fit border-2 p-2 content-center",
+                "transition-all cursor-pointer select-none rounded-sm",
                 className
             )}
         >
