@@ -32,7 +32,7 @@ const ShowCase = () => {
                         </Frame>
                     </span>
                     <BiInfoSquare
-                        className="text-slate-500 rounded-sm md:hidden size-8 shadow-md shadow-slate-500 cursor-pointer"
+                        className="text-slate-500 rounded-sm md:hidden size-8 shadow-md shadow-slate-500 cursor-pointer m-2"
                     />
                 </div>
                 <div className="w-full h-full flex justify-center items-center flex-nowrap">

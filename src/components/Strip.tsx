@@ -2,7 +2,8 @@ import clsx from "clsx";
 
 interface StripProps {
     className: string;
-    value: string;
+    value: "insert" | "modify" | "delete" | "search" | undefined;
+    onClick: () => void;
 }
 export const Strip: React.FC<StripProps> = ({ className, value }) => {
     return (

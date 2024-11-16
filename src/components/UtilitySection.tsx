@@ -5,10 +5,8 @@ import { BiSearch, BiUndo } from "react-icons/bi";
 import { TbReplaceFilled } from "react-icons/tb";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { FiPlusSquare } from "react-icons/fi";
-import { useState } from "react";
-import { Frame } from "./ShowcaseComponents";
+import { ReactElement, useState } from "react";
 import { Button, Input } from "./InterectiveComponents";
-import { BsBack } from "react-icons/bs";
 
 // NOTES:
 // 1. Will use buttons with input elements. ❌
@@ -18,13 +16,14 @@ import { BsBack } from "react-icons/bs";
 // 4. On next screen, the input box, and a validate button. ❌
 // 5. (optional) an animation to show the data being sent to dhanchu bot in the bottom right corner of showcase. ❌
 
-export type utilityType = {
-    utility: string;
-    data: string;
+export type stripItemsType = {
+    value: "insert" | "modify" | "delete" | "search" | undefined;
+    label: ReactElement | null;
+    tone: string
 };
 
 // consider using icons instead of labels (more interactive? yes/no)
-const stripItems = [
+const stripItems: stripItemsType[] = [
     {
         value: "insert",
         label: <FiPlusSquare />,
@@ -68,11 +67,16 @@ const UtilitySection = () => {
                         <BiUndo
                             size={50}
                             className="text-green-200 border-4 border-green-200 rounded-md bg-slate-500"
+                            onClick={() => setInInputMode(false)}
                         />
                     </div>
                 </div>
             ) : (
-                <StripSlider strips={stripItems} />
+                <StripSlider
+                    strips={stripItems}
+                    setInInputMode={setInInputMode}
+                    setCurrentOperation={setCurrentOperation}
+                />
             )}
         </>
     );
