@@ -6,7 +6,7 @@ interface ButtonProps {
 }
 export const Button: React.FC<ButtonProps> = ({ children }) => {
     return (
-        <div className="cursor-pointer select-none border-4 border-green-200 bg-slate-500 hover:bg-slate-600 transition-all text-green-200 max-w-fit p-2 rounded-sm m-2 text-lg font-mono font-semibold tracking-widest">
+        <div className="cursor-pointer select-none border-4 border-green-200 bg-slate-500 hover:bg-slate-600 transition-all text-green-200 max-w-fit p-2 rounded-sm text-lg font-mono font-semibold tracking-widest">
             {children}
         </div>
     );

@@ -57,10 +57,8 @@ const UtilitySection = () => {
         <>
             {inInputMode ? (
                 <div className="w-full h-full bg-green-300 flex">
-                    <div className="w-3/6 h-full inline-flex justify-center items-center">
-                        <Input placeHolder="new value here" />
-                    </div>
-                    <div className="w-2/6 h-full inline-flex justify-center items-center">
+                    <div className="w-3/6 h-full flex flex-col justify-evenly items-center">
+                        <Input placeHolder="Type value here" />
                         <Button>{currentOperation}</Button>
                     </div>
                     <div className="w-1/6 inline-flex justify-center items-center">
