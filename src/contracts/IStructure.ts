@@ -1,5 +1,3 @@
-import { DataNode } from "../Types";
-
 type trio = -1 | 0 | 1;
 
 export interface IStructure<T> {

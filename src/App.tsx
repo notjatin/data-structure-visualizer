@@ -7,14 +7,13 @@ import { InputProvider } from "./contexts/InputContext";
 
 function App() {
     const [structure, setStructure] = useState("array");
-    const [showMenu, setShowMenu] = useState(true);
 
     return (
         <>
             {/* just use the default three window style. */}
             <main className="w-lvw h-lvh md:grid grid-rows-[1fr] grid-cols-[5fr_2fr]">
                 <section className="row-span-2 w-full h-5/6 bg-green-50 bg-gradient-to-r from-gray-300 from-[1px] to-transparent to-[1px] bg-[length:2rem_2rem] bg-centershadow shadow-sm shadow-green-900 ">
-                    <ShowCase structure={structure} />
+                    <ShowCase structure={structure} setStructure={setStructure} />
                 </section>
                 <section className="shadow-sm shadow-green-300 h-1/6 w-full flex flex-col rounded-sm">
                     <div className="hidden bg-green-100">

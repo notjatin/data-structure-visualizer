@@ -15,6 +15,7 @@ import { v4 } from "uuid";
 
 interface ShowCaseProps {
     structure: string;
+    setStructure: (structure: string) => void;
 }
 const ShowCase: React.FC<ShowCaseProps> = ({ structure, setStructure }) => {
     const [array, setArray] = useState([2, 5, 4, 10]);
@@ -23,7 +24,10 @@ const ShowCase: React.FC<ShowCaseProps> = ({ structure, setStructure }) => {
             <header className="bg-green-100 p-2 flex min-h-10 items-center shadow-md shadow-slate-500">
                 <FaHamburger className="text-slate-600 w-fit size-5 cursor-pointer" />
 
-                <div className="flex-1 inline-flex justify-center text-slate-600 uppercase font-semibold">
+                <div
+                    className="flex-1 inline-flex justify-center text-slate-600 uppercase font-semibold"
+                    onClick={() => setStructure(structure)}
+                >
                     {structure}
                 </div>
 
@@ -44,13 +48,18 @@ const ShowCase: React.FC<ShowCaseProps> = ({ structure, setStructure }) => {
                 </span>
                 <BiInfoSquare className="text-slate-500 rounded-sm md:hidden size-8 shadow-md shadow-slate-500 cursor-pointer m-2" />
             </div>
-            <div className="w-full h-full flex justify-center items-center gap-2 flex-nowrap">
+            <div
+                className="w-full h-full flex justify-center items-center gap-2 flex-nowrap"
+                onDoubleClick={() => setArray(array)}
+            >
                 {/* map through the array items here */}
-                {
-                    array.map((item) => {
-                        return <Frame type={"square"} className={""} key={v4()}>{item}</Frame>
-                    })
-                }
+                {array.map((item) => {
+                    return (
+                        <Frame type={"square"} className={""} key={v4()}>
+                            {item}
+                        </Frame>
+                    );
+                })}
             </div>
         </div>
     );
