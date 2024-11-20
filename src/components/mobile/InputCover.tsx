@@ -1,10 +1,12 @@
 // Component to cover the entire screen to facilitate mobile input perfectly
 // specifically for the on-screen keyboard usecase
 
-const InputCover = () => {
-    return <div>
+import { Input } from "../InterectiveComponents";
 
-    </div>
-}
+const InputCover = () => {
+    return <div className="w-lvw w-lvh z-20 bg-black">
+        <Input placeHolder={"Enter here:"} />
+    </div>;
+};
 
 export default InputCover;

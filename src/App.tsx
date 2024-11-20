@@ -4,6 +4,7 @@ import InfoSection from "./components/InfoSection";
 import ShowCase from "./components/ShowCase";
 import UtilitySection from "./components/UtilitySection";
 import { InputProvider } from "./contexts/InputContext";
+import InputCover from "./components/mobile/InputCover";
 
 function App() {
     const [structure, setStructure] = useState("array");
@@ -25,6 +26,7 @@ function App() {
                         </InputProvider>
                     </div>
                 </section>
+                <InputCover></InputCover>
             </main>
         </>
     );
