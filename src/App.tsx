@@ -5,9 +5,32 @@ import ShowCase from "./components/ShowCase";
 import UtilitySection from "./components/UtilitySection";
 import { InputProvider } from "./contexts/InputContext";
 import InputCover from "./components/mobile/InputCover";
+import { operationType } from "./Types";
 
 function App() {
   const [structure, setStructure] = useState("array");
+
+  // method to handle key according to the operation
+  const handleOperation = (operation: operationType, value: string): void => {
+    console.log(`using operation ${operation} with key ${value}.`);
+    switch (operation) {
+      case "insert":
+        console.log(`validated ${value}`);
+        break;
+      case "search":
+        console.log(`searching for ${value}`);
+        break;
+      case "delete":
+        console.log(`deleting ${value}`);
+        break;
+      case "modify":
+        console.log(`modifying ${value}`);
+        break;
+      default:
+        throw new Error("Specify valid operation.");
+        break;
+    }
+  };
 
   return (
     <>
@@ -22,7 +45,7 @@ function App() {
           </div>
           <div className="h-full w-full bg-green-200 flex items-center overflow-auto">
             <InputProvider>
-              <UtilitySection />
+              <UtilitySection handleOperation={handleOperation} />
             </InputProvider>
           </div>
         </section>

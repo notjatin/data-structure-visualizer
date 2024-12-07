@@ -2,16 +2,15 @@ import clsx from "clsx";
 import { Strip } from "./Strip";
 import { v4 } from "uuid";
 import { ReactElement } from "react";
+import { operationType } from "../Types";
 
 interface StripSliderProps {
   strips: {
-    value: "insert" | "modify" | "delete" | "search" | undefined;
+    value: operationType;
     label: ReactElement | null;
     tone: string;
   }[];
-  setCurrentOperation: (
-    currentOperation: "insert" | "modify" | "delete" | "search" | undefined,
-  ) => void;
+  setCurrentOperation: (currentOperation: operationType) => void;
 }
 export const StripSlider: React.FC<StripSliderProps> = ({
   strips,

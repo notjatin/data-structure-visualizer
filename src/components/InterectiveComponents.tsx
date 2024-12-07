@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import { ReactNode, useRef } from "react";
+import { ChangeEvent, ReactNode } from "react";
 
 interface ButtonProps {
   children: ReactNode;
@@ -23,24 +23,16 @@ export const Input = ({
   value: string;
   setValue: (value: string) => void;
 }) => {
-  const inputRef = useRef<HTMLDivElement>(null);
-
   return (
-    <div
-      ref={inputRef}
+    <input
       className={clsx(
         "min-w-32 h-10 p-2 rounded-sm",
         "bg-slate-100 text-green-700 border-4 border-slate-500",
         "inline-flex justify-center items-center",
         "font-mono font-semibold tracking-wider",
       )}
-      contentEditable
-      defaultValue={value}
-      suppressContentEditableWarning
-      onChange={() => setValue(value)}
-      // check if working and look for a better way
-    >
-      {value}
-    </div>
+      value={value}
+      onChange={(e: ChangeEvent<HTMLInputElement>) => setValue(e.target.value)}
+    />
   );
 };

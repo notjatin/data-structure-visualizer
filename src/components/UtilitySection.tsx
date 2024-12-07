@@ -5,8 +5,9 @@ import { BiSearch, BiUndo } from "react-icons/bi";
 import { TbReplaceFilled } from "react-icons/tb";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { FiPlusSquare } from "react-icons/fi";
-import { ReactElement, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Button, Input } from "./InterectiveComponents";
+import { operationType, stripItemsType } from "../Types";
 
 // NOTES:
 // 1. Will use buttons with input elements. ❌
@@ -15,13 +16,6 @@ import { Button, Input } from "./InterectiveComponents";
 // 3. Strips as modified buttons with colors. ✅
 // 4. On next screen, the input box, and a validate button. ❌
 // 5. (optional) an animation to show the data being sent to dhanchu bot in the bottom right corner of showcase. ❌
-
-export type stripItemsType = {
-  value: "insert" | "modify" | "delete" | "search" | undefined;
-  label: ReactElement | null;
-  tone: string;
-};
-
 // consider using icons instead of labels (more interactive? yes/no)
 const stripItems: stripItemsType[] = [
   {
@@ -45,19 +39,18 @@ const stripItems: stripItemsType[] = [
     tone: "border-yellow-500 bg-yellow-300 text-yellow-900",
   },
 ];
-const UtilitySection = () => {
-  const [currentOperation, setCurrentOperation] = useState<
-    "insert" | "modify" | "delete" | "search" | undefined
-  >(undefined);
+const UtilitySection = ({
+  handleOperation,
+}: {
+  handleOperation: (operation: operationType, value: string) => void;
+}) => {
+  const [currentOperation, setCurrentOperation] =
+    useState<operationType>(undefined);
   const [value, setValue] = useState("enter value here");
 
   useEffect(() => {
     console.log("UtilitySection" + " " + currentOperation);
   }, [currentOperation]);
-
-  const handleOperation = (operation: string, value: string) => {
-    console.log(`using operation ${operation} with key ${value}.`);
-  };
 
   return (
     // replace the vertical scrollbar with an arrow later in medium/large
