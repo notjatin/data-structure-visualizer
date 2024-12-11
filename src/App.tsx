@@ -4,7 +4,6 @@ import InfoSection from "./components/InfoSection";
 import ShowCase from "./components/ShowCase";
 import UtilitySection from "./components/UtilitySection";
 import { InputProvider } from "./contexts/InputContext";
-import InputCover from "./components/mobile/InputCover";
 import { operationType } from "./Types";
 
 function App() {
@@ -43,15 +42,15 @@ function App() {
   return (
     <>
       {/* just use the default three window style. */}
-      <main className="w-lvw h-lvh md:grid grid-rows-[1fr] grid-cols-[5fr_2fr]">
-        <section className="row-span-2 w-full h-5/6 bg-green-50 bg-gradient-to-r from-gray-300 from-[1px] to-transparent to-[1px] bg-[length:2rem_2rem] bg-centershadow shadow-sm shadow-green-900 ">
+      <main className="w-lvw h-lvh md:grid md:grid-rows-[1fr_1fr] md:grid-cols-[5fr_2fr] md:gap-1 md:p-1">
+        <section className="row-span-2 w-full h-5/6 md:h-full bg-green-50 bg-gradient-to-r from-gray-300 from-[1px] to-transparent to-[1px] bg-[length:2rem_2rem] bg-centershadow shadow-sm shadow-green-900 ">
           <ShowCase
             structure={structure}
             setStructure={setStructure}
             array={array}
           />
         </section>
-        <section className="shadow-sm shadow-green-300 h-1/6 w-full flex flex-col rounded-sm">
+        <section className="shadow-sm shadow-green-300 h-1/6 md:h-full w-full flex flex-col rounded-sm">
           <div className="hidden bg-green-100">
             <InfoSection />
           </div>
@@ -61,7 +60,6 @@ function App() {
             </InputProvider>
           </div>
         </section>
-        <InputCover></InputCover>
       </main>
     </>
   );

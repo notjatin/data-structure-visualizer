@@ -17,7 +17,7 @@ export const StripSlider: React.FC<StripSliderProps> = ({
   setCurrentOperation,
 }) => {
   return (
-    <div className="flex justify-evenly items-center h-full w-full">
+    <div className="flex md:flex-col md:p-2 md:gap-2 justify-evenly items-center h-full w-full">
       {strips.map((stripItem) => {
         return (
           <Strip
