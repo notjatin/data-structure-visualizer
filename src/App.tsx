@@ -9,13 +9,22 @@ import { operationType } from "./Types";
 
 function App() {
   const [structure, setStructure] = useState("array");
+  const [array, setArray] = useState<Array<number>>([]);
 
   // method to handle key according to the operation
   const handleOperation = (operation: operationType, value: string): void => {
+    if (parseInt(value) > 0) {
+      console.log(`validated ${value}`);
+    } else console.log(`${value} not valid.`);
+
     console.log(`using operation ${operation} with key ${value}.`);
     switch (operation) {
       case "insert":
-        console.log(`validated ${value}`);
+        if (array.includes(parseInt(value))) {
+          console.log(`${value} already there. Give a unique one`);
+        } else {
+          setArray((oldArray) => [...oldArray, parseInt(value)]);
+        }
         break;
       case "search":
         console.log(`searching for ${value}`);
@@ -28,7 +37,6 @@ function App() {
         break;
       default:
         throw new Error("Specify valid operation.");
-        break;
     }
   };
 
@@ -37,7 +45,11 @@ function App() {
       {/* just use the default three window style. */}
       <main className="w-lvw h-lvh md:grid grid-rows-[1fr] grid-cols-[5fr_2fr]">
         <section className="row-span-2 w-full h-5/6 bg-green-50 bg-gradient-to-r from-gray-300 from-[1px] to-transparent to-[1px] bg-[length:2rem_2rem] bg-centershadow shadow-sm shadow-green-900 ">
-          <ShowCase structure={structure} setStructure={setStructure} />
+          <ShowCase
+            structure={structure}
+            setStructure={setStructure}
+            array={array}
+          />
         </section>
         <section className="shadow-sm shadow-green-300 h-1/6 w-full flex flex-col rounded-sm">
           <div className="hidden bg-green-100">
