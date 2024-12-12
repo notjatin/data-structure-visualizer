@@ -14,28 +14,30 @@ function App() {
   const handleOperation = (operation: operationType, value: string): void => {
     if (parseInt(value) > 0) {
       console.log(`validated ${value}`);
-    } else console.log(`${value} not valid.`);
 
-    console.log(`using operation ${operation} with key ${value}.`);
-    switch (operation) {
-      case "insert":
-        if (array.includes(parseInt(value))) {
-          console.log(`${value} already there. Give a unique one`);
-        } else {
-          setArray((oldArray) => [...oldArray, parseInt(value)]);
-        }
-        break;
-      case "search":
-        console.log(`searching for ${value}`);
-        break;
-      case "delete":
-        console.log(`deleting ${value}`);
-        break;
-      case "modify":
-        console.log(`modifying ${value}`);
-        break;
-      default:
-        throw new Error("Specify valid operation.");
+      console.log(`using operation ${operation} with key ${value}.`);
+      switch (operation) {
+        case "insert":
+          if (array.includes(parseInt(value))) {
+            console.log(`${value} already there. Give a unique one`);
+          } else {
+            setArray((oldArray) => [...oldArray, parseInt(value)]);
+          }
+          break;
+        case "search":
+          console.log(`searching for ${value}`);
+          break;
+        case "delete":
+          console.log(`deleting ${value}`);
+          break;
+        case "modify":
+          console.log(`modifying ${value}`);
+          break;
+        default:
+          throw new Error("Specify valid operation.");
+      }
+    } else {
+      console.log(`${value} not valid.`);
     }
   };
 
