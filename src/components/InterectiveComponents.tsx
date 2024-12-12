@@ -26,7 +26,7 @@ export const Input = ({
   return (
     <input
       className={clsx(
-        "min-w-32 h-10 p-2 rounded-sm",
+        "size-24 p-2 rounded-sm",
         "bg-slate-100 text-green-700 border-4 border-slate-500",
         "inline-flex justify-center items-center",
         "font-mono font-semibold tracking-wider",

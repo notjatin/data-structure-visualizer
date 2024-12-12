@@ -45,7 +45,7 @@ const UtilitySection = ({
   handleOperation: (operation: operationType, value: string) => void;
 }) => {
   const [currentOperation, setCurrentOperation] =
-    useState<operationType>(undefined);
+    useState<operationType>("insert");
 
   useEffect(() => {
     console.log("UtilitySection" + " " + currentOperation);
@@ -54,7 +54,7 @@ const UtilitySection = ({
   return (
     // replace the vertical scrollbar with an arrow later in medium/large
     // on small devices show one strip at a time with side arrows to switch
-    <>
+    <div className="h-full w-full bg-green-300 overflow-hidden">
       {currentOperation !== undefined ? (
         <DataHolder
           handleOperation={handleOperation}
@@ -67,7 +67,7 @@ const UtilitySection = ({
           setCurrentOperation={setCurrentOperation}
         />
       )}
-    </>
+    </div>
   );
 };
 

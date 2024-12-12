@@ -52,15 +52,13 @@ function App() {
             array={array}
           />
         </section>
-        <section className="shadow-sm shadow-green-300 h-1/6 md:h-full w-full flex flex-col rounded-sm">
-          <div className="hidden bg-green-100">
-            <InfoSection />
-          </div>
-          <div className="h-full w-full bg-green-200 flex items-center overflow-auto">
-            <InputProvider>
-              <UtilitySection handleOperation={handleOperation} />
-            </InputProvider>
-          </div>
+        <section className="h-1/6 md:h-full w-full">
+          <InputProvider>
+            <UtilitySection handleOperation={handleOperation} />
+          </InputProvider>
+        </section>
+        <section className="hidden bg-green-100">
+          <InfoSection />
         </section>
       </main>
     </>

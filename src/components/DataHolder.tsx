@@ -13,17 +13,19 @@ const DataHolder: React.FC<DataHolderProps> = ({
   currentOperation,
   setCurrentOperation,
 }) => {
-  const [value, setValue] = useState("enter value here");
+  const [value, setValue] = useState("value");
 
   return (
-    <div className="w-full h-full bg-green-300 flex">
-      <div className="w-3/6 h-full flex flex-col justify-evenly items-center">
+    <div className="h-full w-full grid grid-cols-2 grid-rows-2">
+      <div className="row-span-2 md:col-span-2 flex items-center justify-center">
         <Input value={value} setValue={setValue} />
+      </div>
+      <div className="flex items-center justify-center">
         <Button onClick={() => handleOperation(currentOperation, value)}>
           {currentOperation}
         </Button>
       </div>
-      <div className="w-1/6 inline-flex justify-center items-center">
+      <div className="flex items-center justify-center">
         <BiUndo
           size={50}
           className="text-green-200 border-4 border-green-200 rounded-md bg-slate-500"
