@@ -19,9 +19,11 @@ export const Button: React.FC<ButtonProps> = ({ children, onClick }) => {
 export const Input = ({
   value,
   setValue,
+  onSubmit,
 }: {
   value: string;
   setValue: (value: string) => void;
+  onSubmit: React.FormEventHandler<HTMLInputElement> | undefined;
 }) => {
   return (
     <input
@@ -33,6 +35,8 @@ export const Input = ({
       )}
       value={value}
       onChange={(e: ChangeEvent<HTMLInputElement>) => setValue(e.target.value)}
+      onClick={() => setValue("")}
+      onSubmit={onSubmit}
     />
   );
 };

@@ -7,6 +7,7 @@
     2. `npm install -D tailwindcss postcss autoprefixer`
     3. `npx tailwindcss init -p`
     4. `npm install @tailwindcss/forms @tailwindcss/typography`
+<<<<<<< HEAD
 -   Added 1. These lines to `/src/index.css`
     `css
     @tailwind base;
@@ -60,3 +61,25 @@ clsx(
 );
 //=> 'foo bar hello world cya'
 ```
+=======
+* Added
+    1. These lines to `/src/index.css`
+        ```css
+        @tailwind base;
+        @tailwind components;
+        @tailwind utilities;
+        ```
+    2. To `/tailwind.config.js`
+        ```js
+        export default {
+            content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+            theme: {
+                extend: {},
+            },
+            plugins: [
+                require("@tailwindcss/forms"),
+                require("@tailwindcss/typography"),
+            ],
+        };
+        ```
+>>>>>>> parent of 2029882 (improve grammar)

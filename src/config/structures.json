@@ -1,0 +1,100 @@
+{
+  "dataStructures": {
+    "linkedList": {
+      "description": "A linked list is a linear data structure where elements are stored in nodes, and each node points to the next node.",
+      "subtypes": {
+        "singly": {
+          "description": "A singly linked list has nodes where each node points to the next node.",
+          "nodeStructure": {
+            "data": "The data stored in the node",
+            "next": "A pointer to the next node in the list (null for the last node)"
+          }
+        },
+        "doubly": {
+          "description": "A doubly linked list has nodes where each node points to both the next and previous nodes.",
+          "nodeStructure": {
+            "data": "The data stored in the node",
+            "next": "A pointer to the next node in the list (null for the last node)",
+            "prev": "A pointer to the previous node in the list (null for the first node)"
+          }
+        },
+        "circular": {
+          "description": "A circular linked list has nodes that point to the next node, and the last node points back to the first node.",
+          "nodeStructure": {
+            "data": "The data stored in the node",
+            "next": "A pointer to the next node in the list (last node points to the first node)"
+          }
+        }
+      }
+    },
+    "stack": {
+      "description": "A stack is a linear data structure that follows the Last In First Out (LIFO) principle.",
+      "subtypes": {
+        "array": {
+          "description": "A stack implemented using an array.",
+          "operationStructure": {
+            "push": "Add an element to the top of the stack",
+            "pop": "Remove and return the element from the top of the stack",
+            "peek": "Return the top element without removing it",
+            "isEmpty": "Check if the stack is empty",
+            "size": "Get the number of elements in the stack"
+          }
+        },
+        "linkedList": {
+          "description": "A stack implemented using a linked list.",
+          "nodeStructure": {
+            "data": "The data stored in the node",
+            "next": "A pointer to the next node (top of stack points to null)"
+          },
+          "operationStructure": {
+            "push": "Add an element to the top of the stack",
+            "pop": "Remove and return the element from the top of the stack",
+            "peek": "Return the top element without removing it",
+            "isEmpty": "Check if the stack is empty",
+            "size": "Get the number of elements in the stack"
+          }
+        }
+      }
+    },
+    "queue": {
+      "description": "A queue is a linear data structure that follows the First In First Out (FIFO) principle.",
+      "subtypes": {
+        "array": {
+          "description": "A queue implemented using an array.",
+          "operationStructure": {
+            "enqueue": "Add an element to the rear of the queue",
+            "dequeue": "Remove and return the element from the front of the queue",
+            "peek": "Return the front element without removing it",
+            "isEmpty": "Check if the queue is empty",
+            "size": "Get the number of elements in the queue"
+          }
+        },
+        "linkedList": {
+          "description": "A queue implemented using a linked list.",
+          "nodeStructure": {
+            "data": "The data stored in the node",
+            "next": "A pointer to the next node in the queue"
+          },
+          "operationStructure": {
+            "enqueue": "Add an element to the rear of the queue",
+            "dequeue": "Remove and return the element from the front of the queue",
+            "peek": "Return the front element without removing it",
+            "isEmpty": "Check if the queue is empty",
+            "size": "Get the number of elements in the queue"
+          }
+        },
+        "circular": {
+          "description": "A circular queue is a queue in which the last element is connected back to the first element.",
+          "operationStructure": {
+            "enqueue": "Add an element to the rear of the queue",
+            "dequeue": "Remove and return the element from the front of the queue",
+            "peek": "Return the front element without removing it",
+            "isEmpty": "Check if the queue is empty",
+            "size": "Get the number of elements in the queue",
+            "isFull": "Check if the queue is full"
+          }
+        }
+      }
+    }
+  }
+}
