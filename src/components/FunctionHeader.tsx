@@ -2,7 +2,10 @@ import { ChangeEvent, useEffect, useState } from "react";
 import functionHeaderData from "../data/functionHeaderData.json";
 import { FunctionHeaderDataType, Type } from "../types/FunctionHeaderDataType";
 
-const FunctionHeader = () => {
+interface FunctionHeaderProps {
+  onInsertBox: () => void;
+}
+const FunctionHeader: React.FC<FunctionHeaderProps> = ({ onInsertBox }) => {
   const [structures, setStructures] = useState<FunctionHeaderDataType[]>([]);
   const [selectedStructure, setSelectedStructure] = useState<string>("array");
   const [selectedStructureType, setSelectedStructureType] =
@@ -47,6 +50,15 @@ const FunctionHeader = () => {
     setSelectedMethod(event.target.value);
   }
 
+  function handleBoxInsert(): void {
+    onInsertBox();
+    console.log("Inserting box with the following selections:");
+    console.log("Selected Structure:", selectedStructure);
+    console.log("Selected Structure Type:", selectedStructureType);
+    console.log("Selected Method:", selectedMethod);
+    // Implement the logic to insert a box based on the selected options
+    // This could involve updating state, making an API call, etc.
+  }
   return (
     <div className="w-full flex items-center justify-center">
       <header className="bg-gray-700 text-white p-4 w-full h-16 flex items-center justify-evenly">
@@ -95,14 +107,10 @@ const FunctionHeader = () => {
         </select>
 
         <button
-          className="w-32 h-10 bg-gray-500 text-white p-2 rounded-md"
-          onClick={() => {
-            console.log("Selected Structure:", selectedStructure);
-            console.log("Selected Structure Type:", selectedStructureType);
-            console.log("Selected Method:", selectedMethod);
-          }}
+          className="w-32 h-10 bg-gray-500 text-white p-2 rounded-md hover:bg-gray-600"
+          onClick={handleBoxInsert}
         >
-          Print Selection
+          insert-box
         </button>
       </header>
     </div>
