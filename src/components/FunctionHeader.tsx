@@ -48,7 +48,7 @@ const FunctionHeader = () => {
   }
 
   return (
-    <div className="h-lvh w-full flex items-center justify-center">
+    <div className="w-full flex items-center justify-center">
       <header className="bg-gray-700 text-white p-4 w-full h-16 flex items-center justify-evenly">
         <select
           name="structure"
