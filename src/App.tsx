@@ -6,10 +6,10 @@ import OutputScreen from "./components/OutputScreen";
 function App() {
   const [itemArray, setItemArray] = useState<string[]>([]);
 
-  const handleInsertBox = () => {
+  const handleInsertBox = (value: string) => {
     console.log("Inserting new box...");
     let newItemArray = itemArray.slice();
-    newItemArray.push("hi");
+    newItemArray.push(value);
     setItemArray(newItemArray);
   };
 

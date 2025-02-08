@@ -3,7 +3,7 @@ import functionHeaderData from "../data/functionHeaderData.json";
 import { FunctionHeaderDataType, Type } from "../types/FunctionHeaderDataType";
 
 interface FunctionHeaderProps {
-  onInsertBox: () => void;
+  onInsertBox: (value: string) => void;
 }
 const FunctionHeader: React.FC<FunctionHeaderProps> = ({ onInsertBox }) => {
   const [structures, setStructures] = useState<FunctionHeaderDataType[]>([]);
@@ -13,6 +13,7 @@ const FunctionHeader: React.FC<FunctionHeaderProps> = ({ onInsertBox }) => {
   const [selectedMethod, setSelectedMethod] = useState<string>("");
   const [types, setTypes] = useState<Type[]>([]);
   const [methods, setMethods] = useState<string[]>([]);
+  const [inputValue, setInputValue] = useState<string>("");
 
   useEffect(() => {
     setStructures(functionHeaderData);
@@ -50,14 +51,22 @@ const FunctionHeader: React.FC<FunctionHeaderProps> = ({ onInsertBox }) => {
     setSelectedMethod(event.target.value);
   }
 
-  function handleBoxInsert(): void {
-    onInsertBox();
+  function handleBoxInsert(inputValue: string): void {
+    onInsertBox(inputValue);
     console.log("Inserting box with the following selections:");
     console.log("Selected Structure:", selectedStructure);
     console.log("Selected Structure Type:", selectedStructureType);
     console.log("Selected Method:", selectedMethod);
     // Implement the logic to insert a box based on the selected options
     // This could involve updating state, making an API call, etc.
+  }
+
+  function onInputChange(event: ChangeEvent<HTMLInputElement>): void {
+    console.log(event.target.value);
+    if (event.target.value.length > 2 || event.target.value.includes(" ")) {
+      return;
+    }
+    setInputValue(event.target.value);
   }
   return (
     <div className="w-full flex items-center justify-center">
@@ -106,12 +115,20 @@ const FunctionHeader: React.FC<FunctionHeaderProps> = ({ onInsertBox }) => {
           ))}
         </select>
 
-        <button
-          className="w-32 h-10 bg-gray-500 text-white p-2 rounded-md hover:bg-gray-600"
-          onClick={handleBoxInsert}
-        >
-          insert-box
-        </button>
+        <div className="flex items-center justify-center space-x-4">
+          <input
+            value={inputValue}
+            type="text"
+            className="w-16 h-10 text-black p-2 rounded-md"
+            onChange={onInputChange}
+          />
+          <button
+            className="w-48 h-10 bg-gray-500 text-white p-2 rounded-md hover:bg-gray-600"
+            onClick={() => handleBoxInsert(inputValue)}
+          >
+            insert-box
+          </button>
+        </div>
       </header>
     </div>
   );
