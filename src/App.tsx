@@ -23,10 +23,26 @@ function App() {
     setItemArray(newItemArray);
   };
 
+  const handleBoxUpdate = (oldValue: string, newValue: string) => {
+    console.log(`Update value ${oldValue}`);
+    if (itemArray.includes(newValue)) {
+      console.log(newValue + " already exists in the array.");
+      return;
+    }
+    let newItemArray = itemArray.map((item) =>
+      item === oldValue ? newValue : item
+    );
+    setItemArray(newItemArray);
+  };
+
   return (
     <div className="h-lvh flex flex-col font-mono">
       <FunctionHeader onInsertBox={handleInsertBox} />
-      <OutputScreen items={itemArray} onBoxDelete={handleBoxDelete} />
+      <OutputScreen
+        items={itemArray}
+        onBoxDelete={handleBoxDelete}
+        onBoxUpdate={handleBoxUpdate}
+      />
     </div>
   );
 }
