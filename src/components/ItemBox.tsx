@@ -3,11 +3,15 @@ import { AiFillDelete } from "react-icons/ai";
 
 interface ItemBoxProps {
   text: string;
+  onBoxDelete: (text: string) => void;
 }
 
-const ItemBox: React.FC<ItemBoxProps> = ({ text }) => {
+const ItemBox: React.FC<ItemBoxProps> = ({ text, onBoxDelete }) => {
   if (text.length !== 2) {
     return null;
+  }
+  function handleBoxDelete() {
+    onBoxDelete(text);
   }
 
   return (
@@ -15,7 +19,7 @@ const ItemBox: React.FC<ItemBoxProps> = ({ text }) => {
       {text}
       <button
         className="h-auto w-fit absolute top-0 right-0 p-1 text-red-500 hover:text-red-700"
-        onClick={() => console.log("Delete item")}
+        onClick={handleBoxDelete}
       >
         <AiFillDelete />
       </button>
