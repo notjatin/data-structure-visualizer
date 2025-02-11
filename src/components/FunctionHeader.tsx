@@ -53,10 +53,6 @@ const FunctionHeader: React.FC<FunctionHeaderProps> = ({ onInsertBox }) => {
 
   function handleBoxInsert(inputValue: string): void {
     onInsertBox(inputValue);
-    console.log("Inserting box with the following selections:");
-    console.log("Selected Structure:", selectedStructure);
-    console.log("Selected Structure Type:", selectedStructureType);
-    console.log("Selected Method:", selectedMethod);
     // Implement the logic to insert a box based on the selected options
     // This could involve updating state, making an API call, etc.
   }
