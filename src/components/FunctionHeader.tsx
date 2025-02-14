@@ -1,6 +1,7 @@
 import { ChangeEvent, useEffect, useState } from "react";
 import functionHeaderData from "../data/functionHeaderData.json";
 import { FunctionHeaderDataType, Type } from "../types/FunctionHeaderDataType";
+import InputOverlay from "./InputOverlay";
 
 interface FunctionHeaderProps {
   onInsertBox: (value: string) => void;
@@ -13,7 +14,7 @@ const FunctionHeader: React.FC<FunctionHeaderProps> = ({ onInsertBox }) => {
   const [selectedMethod, setSelectedMethod] = useState<string>("");
   const [types, setTypes] = useState<Type[]>([]);
   const [methods, setMethods] = useState<string[]>([]);
-  const [inputValue, setInputValue] = useState<string>("");
+  const [methodClicked, setMethodClicked] = useState(false);
 
   useEffect(() => {
     setStructures(functionHeaderData);
@@ -51,22 +52,9 @@ const FunctionHeader: React.FC<FunctionHeaderProps> = ({ onInsertBox }) => {
     setSelectedMethod(event.target.value);
   }
 
-  function handleBoxInsert(inputValue: string): void {
-    onInsertBox(inputValue);
-    // Implement the logic to insert a box based on the selected options
-    // This could involve updating state, making an API call, etc.
-  }
-
-  function onInputChange(event: ChangeEvent<HTMLInputElement>): void {
-    console.log(event.target.value);
-    if (event.target.value.length > 2 || event.target.value.includes(" ")) {
-      return;
-    }
-    setInputValue(event.target.value);
-  }
   return (
     <div className="w-full flex items-center justify-center">
-      <header className="bg-gray-700 text-white p-4 w-full h-16 flex items-center justify-evenly">
+      <header className="relative bg-gray-700 text-white p-4 w-full h-16 flex items-center justify-evenly">
         <select
           name="structure"
           id="structure"
@@ -80,7 +68,6 @@ const FunctionHeader: React.FC<FunctionHeaderProps> = ({ onInsertBox }) => {
             </option>
           ))}
         </select>
-
         {types.length > 0 && (
           <select
             name="structure-type"
@@ -96,7 +83,6 @@ const FunctionHeader: React.FC<FunctionHeaderProps> = ({ onInsertBox }) => {
             ))}
           </select>
         )}
-
         <select
           name="method"
           id="method"
@@ -110,21 +96,17 @@ const FunctionHeader: React.FC<FunctionHeaderProps> = ({ onInsertBox }) => {
             </option>
           ))}
         </select>
-
-        <div className="flex items-center justify-center space-x-4">
-          <input
-            value={inputValue}
-            type="text"
-            className="w-16 h-10 text-black p-2 rounded-md"
-            onChange={onInputChange}
-          />
-          <button
-            className="w-48 h-10 bg-gray-500 text-white p-2 rounded-md hover:bg-gray-600"
-            onClick={() => handleBoxInsert(inputValue)}
-          >
-            insert-box
-          </button>
-        </div>
+        <button
+          className="w-48 h-10 bg-gray-500 text-white p-2 rounded-md hover:bg-gray-600"
+          onClick={() => setMethodClicked(true)}
+        >
+          GO!
+        </button>
+        {selectedMethod.includes("insert") && methodClicked && (
+          <div className="absolute top-16 left-0">
+            <InputOverlay onDone={onInsertBox} onCancel={setMethodClicked} />
+          </div>
+        )}
       </header>
     </div>
   );
