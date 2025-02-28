@@ -1,0 +1,63 @@
+[
+  {
+    "name": "array",
+    "label": "Array",
+    "types": [
+      {
+        "name": "1-d array",
+        "label": "1-D Array",
+        "desc": "The simplest type of data structure is a linear array, also called a one-dimensional array. "
+      },
+      {
+        "name": "2-d array",
+        "label": "2-D Array",
+        "desc": "2-D array is a collection of rows and columns. It is a matrix-like structure."
+      }
+    ],
+    "methods": ["insert", "update", "delete", "search"],
+    "desc": "In computer science, an array is a data structure consisting of a collection of elements (values or variables), of same memory size, each identified by at least one array index or key. An array is stored such that the position of each element can be computed from its index tuple by a mathematical formula."
+  },
+  {
+    "name": "linked-list",
+    "label": "Linked-List",
+    "types": [
+      {
+        "name": "singly-linked-list",
+        "label": "Singly Linked",
+        "desc": "Singly linked list is a collection of nodes linked together in a sequential way where each node of the singly linked list contains a data field and an address field which contains the reference of the next node."
+      },
+      {
+        "name": "doubly-linked-list",
+        "label": "Doubly Linked",
+        "desc": "Doubly linked list is a collection of nodes linked together in a sequential way where each node of the doubly linked list contains a data field and two address fields which contains the reference of the next node and the reference of the previous node."
+      }
+    ],
+    "methods": ["insert", "search", "delete"],
+    "desc": "Linked-List is a linear data structure where each element is a separate object. Each element (we will call it a node) of a list is comprising of two items - the data and a reference to the next node."
+  },
+  {
+    "name": "stack",
+    "label": "Stack",
+    "types": [],
+    "methods": ["isEmpty", "push", "pop"],
+    "desc": "Stack is a linear data structure which follows a particular order in which the operations are performed. The order may be LIFO(Last In First Out) or FILO(First In Last Out)."
+  },
+  {
+    "name": "queue",
+    "label": "Queue",
+    "types": [
+      {
+        "name": "simple-queue",
+        "label": "Simple Queue",
+        "desc": "A simple queue is a linear data structure which follows a particular order in which the operations are performed. The order is First In First Out (FIFO)."
+      },
+      {
+        "name": "priority-queue",
+        "label": "Priority Queue",
+        "desc": "Priority queue is a type of queue in which every element has a priority assigned to it. Elements are served based on their priority."
+      }
+    ],
+    "methods": ["enqueue", "dequeue"],
+    "desc": "Queue is a linear data structure which follows a particular order in which the operations are performed. The order is First In First Out (FIFO)."
+  }
+]
