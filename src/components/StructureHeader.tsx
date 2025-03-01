@@ -12,15 +12,13 @@ const StructureHeader: React.FC<StructureHeaderProps> = ({
   headerData,
   selectedStructure,
   onStructureChange,
-  selectedSubStructure,
   onSubStructureChange,
 }) => {
   return (
-    <>
+    <div className="w-1/3 flex justify-evenly items-center p-2">
       <DropDown
         label="Main Structure"
         options={headerData}
-        selected={selectedStructure}
         onChange={onStructureChange}
         getLabel={(item) => item.label}
       />
@@ -28,12 +26,11 @@ const StructureHeader: React.FC<StructureHeaderProps> = ({
         <DropDown
           label="Sub Structure"
           options={selectedStructure.types}
-          selected={selectedSubStructure}
           onChange={onSubStructureChange}
           getLabel={(item) => item.label}
         />
       )}
-    </>
+    </div>
   );
 };
 
