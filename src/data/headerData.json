@@ -32,7 +32,7 @@
         "desc": "Doubly linked list is a collection of nodes linked together in a sequential way where each node of the doubly linked list contains a data field and two address fields which contains the reference of the next node and the reference of the previous node."
       }
     ],
-    "methods": ["insert", "search", "delete"],
+    "methods": ["insert", "delete"],
     "desc": "Linked-List is a linear data structure where each element is a separate object. Each element (we will call it a node) of a list is comprising of two items - the data and a reference to the next node."
   },
   {

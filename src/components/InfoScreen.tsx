@@ -7,7 +7,7 @@ const InfoScreen: React.FC<InfoScreenProps> = ({
   subStructureDesc,
 }) => {
   return (
-    <aside className="bg-gray-300 text-gray-800 p-8 text-justify">
+    <aside className="min-w-80 bg-gray-300 text-gray-800 p-8 text-justify">
       <p>{structureDesc}</p>
       {subStructureDesc && (
         <>

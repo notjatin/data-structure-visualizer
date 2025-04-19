@@ -13,7 +13,7 @@ const DropDown = <T,>({
   options,
   onChange,
   getLabel,
-  placeHolder = `Select ${label}`,
+  placeHolder = `<-select->`,
 }: DropDownProps<T>) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState<string | null>(null);

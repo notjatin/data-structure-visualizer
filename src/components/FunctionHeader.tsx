@@ -2,9 +2,11 @@ interface FunctionHeaderProps {
   methods: string[];
 }
 const FunctionHeader: React.FC<FunctionHeaderProps> = ({ methods }) => {
+  function handleMethodClick(method: string) {}
   return (
-    <ul className="w-2/3 h-full flex items-center justify-start">
-      {methods.map((item, index) => (
+    <ul className="h-20 flex items-center justify-start">
+      {/* map over the methods and display them */}
+      {methods.map((method, index) => (
         <li
           key={index}
           className="bg-gray-700 text-gray-300 border-4 border-gray-500 w-24 h-12 ml-8 text-center content-center rounded-lg"
@@ -12,10 +14,11 @@ const FunctionHeader: React.FC<FunctionHeaderProps> = ({ methods }) => {
           <button
             className="h-full w-full tracking-wider hover:tracking-widest transition-all"
             onClick={() => {
-              console.log(`${item} clicked`);
+              console.log(`${method} clicked`);
+              handleMethodClick(method);
             }}
           >
-            {item}
+            {method}
           </button>
         </li>
       ))}

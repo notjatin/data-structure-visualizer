@@ -1,15 +1,15 @@
 import { StructureType, SubStructureType } from "../types/headerData";
 import StructureHeader from "./StructureHeader";
-import FunctionHeader from "./FunctionHeader";
 
+// to type the AppHeader props
 interface AppHeaderProps {
   headerData: StructureType[];
   selectedStructure: StructureType;
-  // onStructureChange: (selectedItem: SubStructureType) => void;
   onStructureChange: React.Dispatch<React.SetStateAction<StructureType>>;
   selectedSubStructure: SubStructureType;
   onSubStructureChange: React.Dispatch<React.SetStateAction<SubStructureType>>;
 }
+
 const AppHeader: React.FC<AppHeaderProps> = ({
   headerData,
   selectedStructure,
@@ -18,7 +18,8 @@ const AppHeader: React.FC<AppHeaderProps> = ({
   onSubStructureChange,
 }) => {
   return (
-    <header className="bg-gray-800 col-span-2 flex h-full">
+    <header className="bg-gray-800 flex h-full">
+      {/* Header to display the structure and substructure */}
       <StructureHeader
         headerData={headerData}
         selectedStructure={selectedStructure}
@@ -26,7 +27,6 @@ const AppHeader: React.FC<AppHeaderProps> = ({
         selectedSubStructure={selectedSubStructure}
         onSubStructureChange={onSubStructureChange}
       />
-      <FunctionHeader methods={selectedStructure.methods} />
     </header>
   );
 };

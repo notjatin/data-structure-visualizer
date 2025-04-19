@@ -8,6 +8,7 @@ interface StructureHeaderProps {
   selectedSubStructure: SubStructureType;
   onSubStructureChange: React.Dispatch<React.SetStateAction<SubStructureType>>;
 }
+
 const StructureHeader: React.FC<StructureHeaderProps> = ({
   headerData,
   selectedStructure,
@@ -15,20 +16,32 @@ const StructureHeader: React.FC<StructureHeaderProps> = ({
   onSubStructureChange,
 }) => {
   return (
-    <div className="w-1/3 flex justify-evenly items-center p-2">
-      <DropDown
-        label="Main Structure"
-        options={headerData}
-        onChange={onStructureChange}
-        getLabel={(item) => item.label}
-      />
-      {selectedStructure.types.length > 0 && (
+    <div className="min-w-80 w-1/3 flex justify-evenly items-center p-2">
+      <div>
+        <label className="text-gray-800 text-center rounded-md bg-gray-300 mb-2">
+          Structure
+        </label>
+        {/* Dropdown to selecte structure from */}
         <DropDown
-          label="Sub Structure"
-          options={selectedStructure.types}
-          onChange={onSubStructureChange}
+          label="Main Structure"
+          options={headerData}
+          onChange={onStructureChange}
           getLabel={(item) => item.label}
         />
+      </div>
+      {selectedStructure.types.length > 0 && (
+        <div>
+          <label className="text-gray-800 text-center rounded-md bg-gray-300 mb-2">
+            Structure Type
+          </label>
+          {/* Dropdown to selecte sub-structure from */}
+          <DropDown
+            label="Sub Structure"
+            options={selectedStructure.types}
+            onChange={onSubStructureChange}
+            getLabel={(item) => item.label}
+          />
+        </div>
       )}
     </div>
   );
