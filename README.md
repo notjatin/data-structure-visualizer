@@ -1,4 +1,4 @@
-# <u>Dhanchu 🫏</u>
+# <u>Data Structure Visualizer 🫏</u>
 ### <u>(an aspired learning platform backed by 4 people)</u>
 The name **"Dhanchu"** comes from the Hindi word "**ढाँचा**" which is a synonym for *structure*.
 
