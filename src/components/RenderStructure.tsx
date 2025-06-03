@@ -2,6 +2,7 @@ import { StructureType } from "../types/headerData";
 import LinkedList from "./structures/LinkedList";
 import Queue from "./structures/Queue";
 import Stack from "./structures/Stack";
+import Array from "./structures/Array";
 
 // prop types
 interface OutputScreenProps {
@@ -20,7 +21,7 @@ const OutputScreen: React.FC<OutputScreenProps> = ({ structure }) => {
       {structure.name === "linked-list" && (
         <LinkedList methods={structure.methods} />
       )}
-      {/* {structure.name === "array" && <Array methods={structure.methods} />} */}
+      {structure.name === "array" && <Array methods={structure.methods} />}
     </div>
   );
 };
